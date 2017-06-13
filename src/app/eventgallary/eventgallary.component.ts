@@ -10,6 +10,9 @@ export class EventgallaryComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    $(document).ready(function(){
+       ($('.carousel.carousel-slider') as any).carousel({fullWidth: true});
+    });
   }
 
 }

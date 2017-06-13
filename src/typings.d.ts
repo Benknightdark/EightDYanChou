@@ -11,6 +11,7 @@ declare interface JQuery{
   easyPieChart:any;
   datepicker:any;
   vectorMap:any;
-  sideNav:any
+  sideNav:any;
+  carousel ():void ();
 }
 
