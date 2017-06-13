@@ -12,15 +12,6 @@
 </head>
 <body id="top" class="scrollspy">
   <app-root></app-root>
-
-
-
-
-
-
-
-
-
   <!--  Scripts-->
   <script src="assets/min/plugin-min.js"></script>
   <script src="assets/min/custom-min.js"></script>
@@ -62,6 +53,13 @@
   });
 
 </script>
-
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.9&appId=269684709777787";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 </html>
-<div id="wonderpush-subscription-switch" data-sentence="接收最新營隊訊息" data-on="YES" data-off="NO"></div>
+
