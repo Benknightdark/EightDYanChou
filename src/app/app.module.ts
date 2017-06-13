@@ -12,6 +12,9 @@ import { IndexComponent } from './index/index.component';
 import { AdminModule } from './admin/admin.module';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -30,7 +33,11 @@ import { environment } from '../environments/environment';
     BrowserModule,
     AppRoutingModule,
     AdminModule,
-        AngularFireModule.initializeApp(environment.firebase)
+          AngularFireModule.initializeApp(environment.firebase),
+
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
