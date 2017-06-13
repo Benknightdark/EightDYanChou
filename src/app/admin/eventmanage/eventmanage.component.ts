@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-eventmanage',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventmanageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private  afAuth: AngularFireAuth,private db: AngularFireDatabase,private router:Router) { }
 
   ngOnInit() {
+  //  this.db.list('/test').subscribe(a=>console.log(a))
   }
+onLogout(){
+
+this.afAuth.auth.signOut();
+this.router.navigate(['/admin/login'])
+}
 
 }

@@ -3,17 +3,17 @@
   <form class="col s12" (ngSubmit)="onSubmit(f)" #f="ngForm" novalidate>
     <div class="row">
       <div class="input-field col s12">
-        <input id="email" type="email" class="validate"  [(value)]="emails">
+        <input id="email" type="email" class="validate"  name="email" [(ngModel)]="email">
         <label for="email">Email</label>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input id="password" type="password" class="validate" [(value)]="password">
+        <input id="password" type="password" class="validate" name="password" [(ngModel)]="password">
         <label for="password">Password</label>
       </div>
     </div>
-    <button class="btn waves-effect waves-light" type="button" name="action" (click)="onclick()">
+    <button class="btn waves-effect waves-light" type="submit" name="action">
         Submit<i class="material-icons right">send</i>
   </button>
   </form>

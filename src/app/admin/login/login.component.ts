@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,24 +11,46 @@ import * as firebase from 'firebase/app';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public afAuth: AngularFireAuth) {
+  constructor(private  afAuth: AngularFireAuth,private db: AngularFireDatabase) {
   }
 
   // tslint:disable-next-line:member-ordering
   user: Observable<firebase.User>;
-    // tslint:disable-next-line:member-ordering
-    emails="";
   // tslint:disable-next-line:member-ordering
-  password="";
-
+  email = "";
+  // tslint:disable-next-line:member-ordering
+  password = "";
+loginUser
   ngOnInit() {
+    firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    this.loginUser = user;
+    console.log("User is logined", user);
+    firebase.auth().currentUser.getToken(true).then(function(idToken) {
+      this.loginUser.idToken = idToken;
+      console.log("取得 ID Token",idToken);
 
-}
-onclick(){
-     // this.afAuth.auth.signInWithEmailAndPassword(this.emails, this.password).then(a => console.log(a));
-}
-onSubmit(f){
+    }).catch(function(error) {
+      // Handle error
 
-}
+    });
+  } else {
+    this.loginUser = null;
+    console.log("User is not logined yet.");
+  }
+});
+
+
+  }
+  onclick() {
+    //
+  }
+  onSubmit(f) {
+    this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password)
+    .then(a => console.log(a.uid))
+    .catch(err => console.log(err));
+
+  }
+
 
 }

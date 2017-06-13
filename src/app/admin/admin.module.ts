@@ -8,7 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../../environments/environment';
 import { AngularFireAuthModule } from "angularfire2/auth";
-
+import { FormsModule } from '@angular/forms';
+import { AngularFireDatabaseModule } from "angularfire2/database";
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +17,9 @@ import { AngularFireAuthModule } from "angularfire2/auth";
     HttpModule,
      AngularFireModule.initializeApp(environment.firebase),
 
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    FormsModule
 
   ],
   declarations: [EventmanageComponent, LoginComponent]
