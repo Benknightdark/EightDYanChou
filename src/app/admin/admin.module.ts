@@ -13,6 +13,7 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
 import { PagemanageComponent } from './pagemanage/pagemanage.component';
 import { AccountService } from '../services/account.service';
 import { AccountGuard } from '../guard/account.guard';
+import { AdminlayoutComponent } from './adminlayout/adminlayout.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -25,7 +26,7 @@ import { AccountGuard } from '../guard/account.guard';
     FormsModule
 
   ],
-  declarations: [EventmanageComponent, LoginComponent, PagemanageComponent],
+  declarations: [EventmanageComponent, LoginComponent, PagemanageComponent, AdminlayoutComponent],
   providers:[AccountService,AccountGuard]
 })
 export class AdminModule { }
