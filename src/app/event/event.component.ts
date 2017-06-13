@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from "angularfire2/database";
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-event',
@@ -6,16 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event.component.css']
 })
 export class EventComponent implements OnInit {
-
-  constructor() { }
+ShowEventData:Observable<any>
+  constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
+       this.ShowEventData= this.db.list("/EventData")
   }
-  onShareEvent() {
-    window.open("https://www.facebook.com/sharer/sharer.php?u=https://docs.google.com/forms/d/1juE7N44SuROXCPYpSEqGl9C7FAYPgL4zDfHEaoAHTpE/viewform?edit_requested=true;src=sdkpreparse")
+  onShareEvent(url) {
+    window.open("https://www.facebook.com/sharer/sharer.php?u="+url+";src=sdkpreparse")
   }
-  onSignUpEvent() {
-    window.open("http://goo.gl/PJ1yub")
+  onSignUpEvent(url) {
+    window.open("url")
   }
 
 }
