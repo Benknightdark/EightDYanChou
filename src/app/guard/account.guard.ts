@@ -15,31 +15,5 @@ if( localStorage.getItem("token")){
 }else{
   this.router.navigate(['/admin/login'])
 }
-// tslint:disable-next-line:prefer-const
-// let isLogin;
-//     firebase.auth().onAuthStateChanged(function (user) {
-//       if (user) {
-//         console.log("User is logined", user);
-//         firebase.auth().currentUser.getToken(true).then(function (idToken) {
-//           user.idToken = idToken;
-//           console.log("取得 ID Token", idToken);
-//              this.router.navigate(['admin/pagemanage'])
-//          // return true;
-//         }).catch(function (error) {
-//           console.log(error)
-//            isLogin=false;
-//          this.router.navigate(['admin/login'])
-//         });
-//         isLogin=true;
-//       } else {
-
-//    isLogin=false;
-//         console.log("User is not logined yet.");
-//       this.router.navigate(['admin/login'])
-//       }
-//     });
-
-// return isLogin;
-
   }
 }
