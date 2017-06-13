@@ -18,6 +18,7 @@ export class EventmanageComponent implements OnInit {
 onLogout(){
 
 this.afAuth.auth.signOut();
+    localStorage.removeItem("token")
 this.router.navigate(['/admin/login'])
 }
 

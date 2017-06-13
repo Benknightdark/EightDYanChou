@@ -8,9 +8,10 @@ export class AccountService {
   constructor(private afAuth: AngularFireAuth, private router: Router) {
   }
   Login(email, password) {
-    this.afAuth.auth.signInWithEmailAndPassword(email, password)
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then(a => {
         if (a.uid) {
+          localStorage.setItem("token",a.uid)
           this.router.navigate(["/admin/pagemanage"])
         } else {
           confirm(a.message)
@@ -22,6 +23,7 @@ export class AccountService {
   }
   Logout() {
     this.afAuth.auth.signOut();
+    localStorage.removeItem("token")
     this.router.navigate(["/admin/login"])
 
   }

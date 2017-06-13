@@ -21,25 +21,8 @@ export class LoginComponent implements OnInit {
   email = "";
   // tslint:disable-next-line:member-ordering
   password = "";
-loginUser
+
   ngOnInit() {
-    firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    this.loginUser = user;
-    console.log("User is logined", user);
-    firebase.auth().currentUser.getToken(true).then(function(idToken) {
-      this.loginUser.idToken = idToken;
-      console.log("取得 ID Token",idToken);
-
-    }).catch(function(error) {
-      // Handle error
-
-    });
-  } else {
-    this.loginUser = null;
-    console.log("User is not logined yet.");
-  }
-});
 
 
   }
