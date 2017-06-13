@@ -14,6 +14,7 @@ import { PagemanageComponent } from './pagemanage/pagemanage.component';
 import { AccountService } from '../services/account.service';
 import { AccountGuard } from '../guard/account.guard';
 import { AdminlayoutComponent } from './adminlayout/adminlayout.component';
+import {ImageUploadModule} from 'angular2-image-upload';
 @NgModule({
   imports: [
     CommonModule,
@@ -23,7 +24,8 @@ import { AdminlayoutComponent } from './adminlayout/adminlayout.component';
 
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    FormsModule
+    FormsModule,
+     ImageUploadModule.forRoot()
 
   ],
   declarations: [EventmanageComponent, LoginComponent, PagemanageComponent, AdminlayoutComponent],
