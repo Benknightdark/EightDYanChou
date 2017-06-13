@@ -29,15 +29,15 @@ isFinishSubmit = false;
    this.ShowEventData= this.db.list("/EventData")
   }
   imageUploaded(data) {
-    console.log(data)
+    //console.log(data)
     this.DMImage = data["src"].replace("data:image/jpeg;base64,", "")
   }
   imageRemoved(event) {
     // this.MetaFormDes.imageinfo = "";
-    console.log(event)
+    //console.log(event)
   }
   disableSendButton(event) {
-    console.log(event)
+    //console.log(event)
   }
   onSubmit(f) {
 
@@ -50,14 +50,16 @@ isFinishSubmit = false;
         this.EventData.imageinfo = a;
         this.EventData.CreateTime = Date.now().toString();
         this.EventData.UpdateTime = Date.now().toString();
-
-        console.log(this.EventData);
+        //console.log(this.EventData);
         this.isFinishSubmit = !this.isFinishSubmit;
-
         this.db.object('/EventData/' + this.EventData.id).set(this.EventData)
         .then(a=>confirm("成功建立新營隊訊息")).catch(e=>console.log(e))
       }).catch((e) => { console.log(e) });
     }).catch((e) => { console.log(e) });
+  }
+  onRemove(id){
+            this.db.object('/EventData/' + id).remove();
+        //    this.ShowEventData= this.db.list("/EventData")
   }
 
 }

@@ -29,7 +29,11 @@
 
 
 <ul class="collection" >
-      <li class="collection-item" *ngFor="let item of ShowEventData |async" >{{item?.title}}</li>
+      <li class="collection-item" ></li>
 
-    </ul>
+              <li class="collection-item"  *ngFor="let item of ShowEventData |async">
+                <div>{{item?.title}}
+
+                    <i class="material-icons" (click)="onRemove(item?.id)">delete</i></div></li>
+   </ul>
 
