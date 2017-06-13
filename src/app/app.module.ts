@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -11,6 +10,9 @@ import { EventgallaryComponent } from './eventgallary/eventgallary.component';
 import { LayoutComponent } from './layout/layout.component';
 import { IndexComponent } from './index/index.component';
 import { AdminModule } from './admin/admin.module';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -21,12 +23,14 @@ import { AdminModule } from './admin/admin.module';
     EventComponent,
     EventgallaryComponent,
     LayoutComponent,
-    IndexComponent
+    IndexComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AdminModule
+    AdminModule,
+        AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]
