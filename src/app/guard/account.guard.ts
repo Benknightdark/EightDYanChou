@@ -6,8 +6,12 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
 export class AccountGuard implements CanActivate {
-u;
-  constructor(private router:Router,private  afAuth: AngularFireAuth){}
+  u;
+  constructor(private router: Router, private afAuth: AngularFireAuth) {
+    if (localStorage.getItem("token")) {
+      this.router.navigate(['/admin/eventmanage'])
+    }
+  }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) {//: Observable<boolean> | Promise<boolean> | boolean
@@ -15,10 +19,10 @@ u;
 
 
 
-if( localStorage.getItem("token")){
-  return true
-}else{
-  this.router.navigate(['/admin/login'])
-}
+    if (localStorage.getItem("token")) {
+      return true
+    } else {
+      this.router.navigate(['/admin/login'])
+    }
   }
 }
