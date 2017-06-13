@@ -352,5 +352,32 @@
   <script src="assets/min/custom-min.js"></script>
 
 </body>
+<div id="wonderpush-subscription-switch" data-sentence="Receive our latest news by web push: " data-on="YES" data-off="NO"></div>
+<script>
 
+(function(w, d, s, id, n){
+    w[n] = w[n] || {q: [],
+        init: function(o) {w[n].initOpts = o;},
+        ready: function(c) {w[n].q.push(c);}};
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "https://cdn.by.wonderpush.com/sdk/1.1/wonderpush-loader.min.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(window, document, "script", "wonderpush-jssdk-loader", "WonderPush"));
+
+WonderPush.init({
+    webKey: "276c00f396f0cb2ed9639f385d7cdb6538f505abcf5c1ff4b1fe24a35dd1b298",
+    optInOptions: {
+        // You can modify or translate the following:
+        modalBoxMessage: "We will send you personalized notifications.<br/>You can always unsubscribe at any time.",
+        modalBoxButton: "Got it!",
+        externalBoxProcessingMessage: "Subscribing...",
+        externalBoxSuccessMessage: "Thanks for subscribing!",
+        externalBoxFailureMessage: "Sorry, something went wrong.",
+        externalBoxTooLongHint: "Poor connection or private browsing?",
+        externalBoxCloseHint: "Close"
+    }
+});
+</script>
 </html>
