@@ -10,6 +10,8 @@ import { environment } from '../../environments/environment';
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { FormsModule } from '@angular/forms';
 import { AngularFireDatabaseModule } from "angularfire2/database";
+import { PagemanageComponent } from './pagemanage/pagemanage.component';
+import { AccountService } from '../services/account.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,6 +24,7 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
     FormsModule
 
   ],
-  declarations: [EventmanageComponent, LoginComponent]
+  declarations: [EventmanageComponent, LoginComponent, PagemanageComponent],
+  providers:[AccountService]
 })
 export class AdminModule { }

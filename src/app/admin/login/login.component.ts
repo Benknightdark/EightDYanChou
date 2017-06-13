@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
+import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import * as firebase from 'firebase/app';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private  afAuth: AngularFireAuth,private db: AngularFireDatabase) {
+  constructor(private  afAuth: AngularFireAuth,private db: AngularFireDatabase ,private account:AccountService) {
   }
 
   // tslint:disable-next-line:member-ordering
@@ -42,13 +43,12 @@ loginUser
 
 
   }
-  onclick() {
-    //
-  }
+
   onSubmit(f) {
-    this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password)
-    .then(a => console.log(a.uid))
-    .catch(err => console.log(err));
+    this.account.Login(this.email, this.password);
+    // this.afAuth.auth.signInWithEmailAndPassword(this.email, this.password)
+    // .then(a => console.log(a.uid))
+    // .catch(err => console.log(err));
 
   }
 
