@@ -8,6 +8,9 @@ import { FooterComponent } from './footer/footer.component';
 import { IntroComponent } from './intro/intro.component';
 import { EventComponent } from './event/event.component';
 import { EventgallaryComponent } from './eventgallary/eventgallary.component';
+import { LayoutComponent } from './layout/layout.component';
+import { IndexComponent } from './index/index.component';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,14 @@ import { EventgallaryComponent } from './eventgallary/eventgallary.component';
     FooterComponent,
     IntroComponent,
     EventComponent,
-    EventgallaryComponent
+    EventgallaryComponent,
+    LayoutComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]
