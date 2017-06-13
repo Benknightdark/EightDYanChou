@@ -12,7 +12,7 @@ export class AccountService {
       .then(a => {
         if (a.uid) {
           localStorage.setItem("token",a.uid)
-          this.router.navigate(["/admin/pagemanage"])
+          this.router.navigate(["/admin/eventmanage"])
         } else {
           confirm(a.message)
         }

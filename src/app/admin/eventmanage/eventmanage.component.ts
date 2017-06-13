@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import * as firebase from 'firebase';
+import { UUID } from 'angular2-uuid';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { Router } from "@angular/router";
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-eventmanage',
@@ -10,16 +11,53 @@ import { Router } from "@angular/router";
 })
 export class EventmanageComponent implements OnInit {
 
-  constructor(private  afAuth: AngularFireAuth,private db: AngularFireDatabase,private router:Router) { }
+isFinishSubmit = false;
+  DMImage;
+  EventData = {
+    id: "",
+    title: "",
+    content: "",
+    websignurl:"",
+    imageinfo: "",
+    CreateTime: "",
+    UpdateTime: "",
+  };
+  ShowEventData:Observable<any>
+  constructor(private db: AngularFireDatabase) { }
 
   ngOnInit() {
-  //  this.db.list('/test').subscribe(a=>console.log(a))
+   this.ShowEventData= this.db.list("/EventData")
   }
-onLogout(){
+  imageUploaded(data) {
+    console.log(data)
+    this.DMImage = data["src"].replace("data:image/jpeg;base64,", "")
+  }
+  imageRemoved(event) {
+    // this.MetaFormDes.imageinfo = "";
+    console.log(event)
+  }
+  disableSendButton(event) {
+    console.log(event)
+  }
+  onSubmit(f) {
 
-this.afAuth.auth.signOut();
-    localStorage.removeItem("token")
-this.router.navigate(['/admin/login'])
-}
+    const ImageName = (Date.now() + ".jpg")
+    this.isFinishSubmit = !this.isFinishSubmit;
+    firebase.storage().ref().child("/DM/" + ImageName).putString(this.DMImage, 'base64').then((snapshot) => {
+      firebase.storage().ref().child("/DM/" + ImageName).getDownloadURL().then(a => {
+        const id = UUID.UUID();
+        this.EventData.id = id;
+        this.EventData.imageinfo = a;
+        this.EventData.CreateTime = Date.now().toString();
+        this.EventData.UpdateTime = Date.now().toString();
+
+        console.log(this.EventData);
+        this.isFinishSubmit = !this.isFinishSubmit;
+
+        this.db.object('/EventData/' + this.EventData.id).set(this.EventData)
+        .then(a=>confirm("成功建立新營隊訊息")).catch(e=>console.log(e))
+      }).catch((e) => { console.log(e) });
+    }).catch((e) => { console.log(e) });
+  }
 
 }

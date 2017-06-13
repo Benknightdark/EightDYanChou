@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { FormsModule } from '@angular/forms';
 import { AngularFireDatabaseModule } from "angularfire2/database";
-import { PagemanageComponent } from './pagemanage/pagemanage.component';
+
 import { AccountService } from '../services/account.service';
 import { AccountGuard } from '../guard/account.guard';
 import { AdminlayoutComponent } from './adminlayout/adminlayout.component';
@@ -28,7 +28,7 @@ import {ImageUploadModule} from 'angular2-image-upload';
      ImageUploadModule.forRoot()
 
   ],
-  declarations: [EventmanageComponent, LoginComponent, PagemanageComponent, AdminlayoutComponent],
+  declarations: [EventmanageComponent, LoginComponent, AdminlayoutComponent],
   providers:[AccountService,AccountGuard]
 })
 export class AdminModule { }

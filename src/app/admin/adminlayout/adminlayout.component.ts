@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-adminlayout',
@@ -7,15 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminlayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private account:AccountService) { }
 
   ngOnInit() {
-    // Initialize collapse button
+
    ( $(".button-collapse") as any).sideNav('show');
-    // Initialize collapsible (uncomment the line below if you use the dropdown variation)
-    //$('.collapsible').collapsible();
 
 
+
+  }
+  onClick(){
+  this.account.Logout()
   }
 
 }
