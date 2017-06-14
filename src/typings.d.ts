@@ -12,6 +12,5 @@ declare interface JQuery{
   datepicker:any;
   vectorMap:any;
   sideNav:any;
-  carousel ():void ();
 }
 
